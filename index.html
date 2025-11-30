@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MD ATHAR Faiyaz | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of MD ATHAR Faiyaz - BCA (AI/DS) student and frontend developer." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #050816;
+      --bg-card: #0f172a;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.15);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.35);
+      --radius-xl: 18px;
+      --radius-full: 999px;
+      --transition-fast: 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.2rem 1.2rem 3rem;
+    }
+
+    /* Navbar */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(3, 7, 18, 0.95), rgba(3, 7, 18, 0.75), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.8rem 1.2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 10% 0, #22c55e, #16a34a, #22c55e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.6);
+    }
+
+    .logo-text-main {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .logo-text-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.2rem;
+      color: var(--text-muted);
+      transition: color var(--transition-fast);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #22c55e, #a3e635);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .pill-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 16px rgba(34, 197, 94, 0.8);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #22c55e, #a3e635);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 0.6rem 1.4rem;
+      font-size: 0.9rem;
+      border-radius: var(--radius-full);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #22c55e, #16a34a);
+      color: #020617;
+      font-weight: 600;
+      box-shadow: 0 15px 30px rgba(34, 197, 94, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 20px 40px rgba(34, 197, 94, 0.55);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(148, 163, 184, 0.35);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.8);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .hero-meta-label {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      color: #6b7280;
+    }
+
+    .hero-meta-value {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-card {
+      position: relative;
+      background: radial-gradient(circle at top, #111827, #020617);
+      border-radius: 24px;
+      padding: 1.4rem;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: var(--shadow-soft);
+      max-width: 320px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .profile-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: var(--accent-soft);
+      border: 1px solid rgba(74, 222, 128, 0.8);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .profile-photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 999px;
+      margin: 0 auto 1rem;
+      background: radial-gradient(circle at 20% 0, #22c55e, #16a34a, #4ade80);
+      padding: 4px;
+      position: relative;
+    }
+
+    .profile-photo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .profile-name {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .profile-role {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .profile-tag {
+      font-size: 0.74rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: var(--radius-full);
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(75, 85, 99, 0.8);
+    }
+
+    .profile-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding-top: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .dots {
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      opacity: 0.5;
+    }
+
+    .dot:nth-child(2) {
+      opacity: 0.8;
+    }
+
+    .dot:nth-child(3) {
+      opacity: 1;
+    }
+
+    /* Sections */
+
+    section {
+      margin-top: 2.2rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 1.2rem;
+      gap: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .section-tagline {
+      font-size: 0.78rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: var(--radius-xl);
+      padding: 1.2rem 1.1rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card + .card {
+      margin-top: 0.9rem;
+    }
+
+    /* About */
+
+    .about-text {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 1.3rem;
+    }
+
+    .about-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.8rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .about-item-label {
+      font-size: 0.76rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .about-item-value {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* Skills */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .skill-pill {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 999px;
+      padding: 0.5rem 0.9rem;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.78rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .skill-pill span {
+      font-weight: 500;
+    }
+
+    .skill-level {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* Projects */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(34, 197, 94, 0.6);
+      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.9);
+    }
+
+    .project-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .project-tag {
+      font-size: 0.72rem;
+      color: #a3e635;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .project-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    .project-stack {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .project-link {
+      font-size: 0.78rem;
+      color: #22c55e;
+      text-decoration: none;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Education */
+
+    .timeline {
+      display: grid;
+      gap: 0.9rem;
+      font-size: 0.86rem;
+    }
+
+    .timeline-item {
+      padding: 0.9rem 1rem;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, #22c55e, transparent);
+      opacity: 0.8;
+    }
+
+    .timeline-title {
+      font-weight: 500;
+      margin-bottom: 0.1rem;
+    }
+
+    .timeline-sub {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-meta {
+      font-size: 0.74rem;
+      color: #6b7280;
+    }
+
+    /* Contact */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 1.2rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+    }
+
+    .contact-item-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #6b7280;
+    }
+
+    .contact-item-value {
+      font-weight: 500;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .social-pill {
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+      transition: border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .social-pill:hover {
+      border-color: rgba(34, 197, 94, 0.8);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .contact-card {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .contact-card p + p {
+      margin-top: 0.4rem;
+    }
+
+    /* Footer */
+
+    .footer {
+      padding: 1rem 1.2rem 2rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 920px) {
+      .hero-inner,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .navbar-inner {
+        padding-inline: 1rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+      }
+
+      .container {
+        padding-inline: 1rem;
+      }
+
+      .hero {
+        padding-top: 1.8rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="navbar-inner">
+      <div class="logo">
+        <div class="logo-badge">A</div>
+        <div>
+          <div class="logo-text-main">MD ATHAR Faiyaz</div>
+          <div class="logo-text-sub">BCA (AI/DS) • Portfolio</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="pill">
+            <div class="pill-dot"></div>
+            <span>BCA (AI/DS) • Frontend Learner</span>
+          </div>
+          <h1 class="hero-title">
+            Hi, I'm <span>MD ATHAR Faiyaz</span> 👋
+          </h1>
+          <p class="hero-subtitle">
+            I am a BCA (AI & Data Science) student with a strong interest in frontend development.
+            I work with HTML, CSS, JavaScript and React, and I love learning by building projects
+            and improving step by step.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">
+              View My Projects →
+            </a>
+            <a href="#contact" class="btn-ghost">
+              Contact Me
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <div class="hero-meta-label">Current Focus</div>
+              <div class="hero-meta-value">Frontend Development • React Basics</div>
+            </div>
+            <div class="hero-meta-item">
+              <div class="hero-meta-label">Location</div>
+              <div class="hero-meta-value">Tarwara Bazar, Siwan (Bihar) • Jaipur</div>
+            </div>
+            <div class="hero-meta-item">
+              <div class="hero-meta-label">Status</div>
+              <div class="hero-meta-value">BCA (AI/DS) @ VGU Jaipur</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="profile-card">
+            <div class="profile-badge">Fresher • Developer</div>
+            <div class="profile-photo">
+              <!-- You can place your own photo here:
+                   <img src="my-photo.jpg" alt="MD ATHAR Faiyaz" style="width:100%;height:100%;border-radius:50%;" />
+              -->
+              <div class="profile-photo-inner">A</div>
+            </div>
+            <div class="profile-name">MD ATHAR Faiyaz</div>
+            <div class="profile-role">BCA (AI/DS) Student & Frontend Enthusiast</div>
+            <div class="profile-tags">
+              <div class="profile-tag">HTML • CSS • JS</div>
+              <div class="profile-tag">React Learner</div>
+              <div class="profile-tag">Problem Solving</div>
+            </div>
+            <div class="profile-footer">
+              <span>Open to internships</span>
+              <div class="dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="section-header">
+        <div>
+          <div class="section-tagline">About</div>
+          <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="section-subtitle">
+          A short introduction, academics and goals.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="about-grid">
+          <div>
+            <p class="about-text">
+              I am a <strong>BCA (AI & Data Science)</strong> student at
+              <strong>Vivekananda Global University, Jaipur</strong>. I am passionate about
+              frontend development, especially <strong>HTML, CSS, JavaScript and React</strong>.
+              My goal is to build clean, responsive and user-friendly websites that solve
+              real problems.
+            </p>
+            <br />
+            <p class="about-text">
+              I also focus on soft skills, problem solving and creative writing.
+              In my free time, I enjoy <strong>photo editing</strong> and
+              <strong>reading books</strong>, which helps me stay creative and focused.
+            </p>
+          </div>
+
+          <div>
+            <div class="about-list">
+              <div>
+                <div class="about-item-label">Name</div>
+                <div class="about-item-value">MD ATHAR Faiyaz</div>
+              </div>
+              <div>
+                <div class="about-item-label">Course</div>
+                <div class="about-item-value">BCA (AI & DS)</div>
+              </div>
+              <div>
+                <div class="about-item-label">College</div>
+                <div class="about-item-value">Vivekananda Global University, Jaipur</div>
+          <div class="timeline-meta">Aug 2024 – Present • Specialization: AI / DS</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-title">12th (Arts) – BSEB</div>
+            <div class="timeline-sub">Bihar School Examination Board</div>
+            <div class="timeline-meta">Score: 60%</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-title">10th – BSEB</div>
+            <div class="timeline-sub">Bihar School Examination Board</div>
+            <div class="timeline-meta">Score: 61%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-header">
+        <div>
+          <div class="section-tagline">Contact</div>
+          <h2 class="section-title">Get in Touch</h2>
+        </div>
+        <div class="section-subtitle">
+          Reach out for internships, collaborations or projects.
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="contact-grid">
+          <div>
+            <div class="contact-list">
+              <div>
+                <div class="contact-item-label">Email</div>
+                <div class="contact-item-value">atharfaiyaz30@gmail.com</div>
+              </div>
+              <div>
+                <div class="contact-item-label">Phone</div>
+                <div class="contact-item-value">+91-8873611211</div>
+              </div>
+              <div>
+                <div class="contact-item-label">Location</div>
+                <div class="contact-item-value">At - Tarwara Bazar, Siwan, Bihar • Currently in Jaipur</div>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <!-- Add your actual profile links here -->
+              <a class="social-pill" href="#" target="_blank">GitHub</a>
+              <a class="social-pill" href="#" target="_blank">LinkedIn</a>
+              <a class="social-pill" href="#" target="_blank">Instagram</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <p>
+              You can contact me for <strong>frontend development</strong>,
+              <strong>AI/DS basics</strong> or <strong>creative work</strong> such as
+              photo editing and content.
+            </p>
+            <p>
+              Feel free to reach out through email or phone, and I will try to respond as soon as possible.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    © <span id="year"></span> MD ATHAR Faiyaz • Built with HTML & CSS
+  </footer>
+</div>
+
+<script>
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
